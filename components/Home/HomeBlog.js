@@ -39,7 +39,7 @@ const HomeBlog = () => {
                 </Link>
               </div>
               <h3 className="blog__title">
-                <Link href={`/blog-details/${_id}`}>
+                <Link href="/community-services">
                   <a>{title.substring(0, 35)}...</a>
                 </Link>
               </h3>

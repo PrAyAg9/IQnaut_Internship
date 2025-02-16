@@ -25,6 +25,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+.firebasescr
+./firebase/firebase-config
+
 # local env files
 .env.local
 .env.development.local

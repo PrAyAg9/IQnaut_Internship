@@ -79,7 +79,7 @@ const HeroArea = () => {
                         We believe everyone should have the opportunity to create progress through technology.
                       </p>
                       <div className="slider__btn">
-                        <Link href="/courses" passHref>
+                        <Link href="/admission" passHref>
                           <a className="tp-btn">Book your Seat</a>
                         </Link>
                       </div>

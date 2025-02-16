@@ -46,7 +46,7 @@ const AboutArea = ({
                 dedicated faculty, and state-of-the-art facilities.
               </p>
               <div className="about__btn">
-                <Link href="/about">
+                <Link href="/principal-message">
                   <a className="tp-btn tp-btn-2">Read more</a>
                 </Link>
               </div>
