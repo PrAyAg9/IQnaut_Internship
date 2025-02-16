@@ -1,1 +1,0 @@
-# IQnaut_Internship
