@@ -2,19 +2,18 @@ import React from "react";
 import BreadCrumb from "../../../components/common/BreadCrumb";
 import Footer from "../../../components/common/Footer";
 import Header from "../../../components/Home/Header";
-import Gallery from "./gallery";
+import Holiday from "./calendar";
 import SEO from "../../../components/seo";
 
-const SignIn = () => {
+const Register = () => {
   return (
     <>
-      <SEO pageTitle="Gallery" />
+      <SEO pageTitle="Holidays List" />
       <Header />
-      {/* <BreadCrumb title="Principal Message" subtitle="Principal Message" /> */}
-      <Gallery />
+      <Holiday />
       <Footer />
     </>
   );
 };
 
-export default SignIn;
+export default Register;

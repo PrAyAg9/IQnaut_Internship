@@ -68,6 +68,19 @@ const StaffCard = ({ staff, showSocial = false }) => {
             height: 350px;
           }
         }
+
+        @media only screen and (max-width: 580px) {
+          .instructor__item {
+            margin: 0 auto;
+            text-align: center;
+          }
+          .instructor__img {
+            margin: 0 auto;
+          }
+          .instructor__content {
+            text-align: center;
+          }
+        }
       `}</style>
     </div>
   );

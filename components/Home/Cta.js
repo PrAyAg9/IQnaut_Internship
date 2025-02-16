@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import Link from 'next/link';
 
 const Cta = () => {
@@ -35,7 +36,7 @@ const Cta = () => {
                       Inspire young minds and shape the future by becoming a part
                       of our esteemed teaching faculty.
                     </p>
-                    <Link href="/careers" passHref>
+                    <Link href="/teachers-training" passHref>
                       <a className="tp-btn tp-btn-3">Join Us</a>
                     </Link>
                   </div>
@@ -69,7 +70,7 @@ const Cta = () => {
                       Join one of the leading schools with world-class education and
                       exceptional learning facilities.
                     </p>
-                    <Link href="/admissions" passHref>
+                    <Link href="/admission" passHref>
                       <a className="tp-btn tp-btn-4">Apply Now</a>
                     </Link>
                   </div>
@@ -79,6 +80,42 @@ const Cta = () => {
           </div>
         </div>
       </section>
+
+      <style jsx>{`
+        @media only screen and (max-width: 580px) {
+          /* Stack columns into one column */
+          .row {
+            flex-direction: column;
+          }
+          /* Adjust each CTA item for smaller view */
+          .cta__item {
+            padding: 20px 15px !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            text-align: center;
+          }
+          .cta__item.pl-70,
+          .cta__item.pr-80 {
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+          }
+          .cta__icon {
+            margin-right: 0 !important;
+            margin-bottom: 15px;
+          }
+          .cta__title {
+            font-size: 1.3rem;
+          }
+          .cta__content p {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+          }
+          .tp-btn {
+            font-size: 0.8rem;
+            padding: 8px 12px;
+          }
+        }
+      `}</style>
     </>
   );
 };
