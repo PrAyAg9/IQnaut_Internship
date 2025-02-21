@@ -4,6 +4,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
+let pagetitle;
+
 const InfrastructurePage = () => {
   const accordionItems = [
     {
@@ -61,7 +63,7 @@ const InfrastructurePage = () => {
 
       {/* Content Section */}
       <div className="content">
-        <h2 className="page-title">Our World-Class Infrastructure</h2>
+        <h2 className="page-title">School At Glance</h2>
         <p className="intro">
           Discover our state-of-the-art campus facilities designed to provide the
           perfect environment for academic excellence and holistic development.

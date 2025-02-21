@@ -10,7 +10,7 @@ const StaffCard = ({ staff, showSocial = false }) => {
         {staff.shape && (
           <div className="instructor__shape" style={staff.shape} />
         )}
-        <Link href={`/staff-details/${staff.id}`} passHref>
+        <Link href={`#`} passHref>
           <Image
             src={staff.image}
             alt={`${staff.name} - ${staff.designation}`}
@@ -25,7 +25,7 @@ const StaffCard = ({ staff, showSocial = false }) => {
         <div className="left">
           <span className="designation">{staff.designation}</span>
           <h4 className="name">
-            <Link href={`/staff-details/${staff.id}`} passHref>
+            <Link href={`#`} passHref>
               {staff.name}
             </Link>
           </h4>

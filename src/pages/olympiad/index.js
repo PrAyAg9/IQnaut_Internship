@@ -7,7 +7,7 @@ import Features from '../../../components/Home/Features';
 import Header from '../../../components/Home/Header';
 import HeroArea from '../../../components/Home/HeroArea';
 // import HomeCourses from '../../../components/Home/HomeCourses';
-import Achievement from '../../../components/achievements/Achievements';
+import Olympiad from '../../../components/achievements/Olympiad';
 import Cta from '../../../components/Home/Cta';
 import Footer from '../../../components/common/Footer';
 import SEO from '../../../components/seo';
@@ -19,7 +19,7 @@ export default function extraactivites() {
        <SEO pageTitle="Extra Curicullar" />
 
       <Header/>
-      <Achievement />
+      <Olympiad />
       <Footer/>
     </>
   )

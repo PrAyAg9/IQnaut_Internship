@@ -74,7 +74,7 @@ const LoginArea = () => {
                     <p>
                       {" "}
                       <span>........</span> Or,{" "}
-                      <Link href="/sign-up">
+                      <Link href="#">
                         <a>sign up</a>
                       </Link>{" "}
                       with your email<span> ........</span>{" "}
@@ -138,7 +138,7 @@ const LoginArea = () => {
                     <div className="sign__new text-center mt-20">
                       <p>
                         New to Eduker ?{" "}
-                        <Link href="/sign-up">
+                        <Link href="#">
                           <a>Sign Up</a>
                         </Link>{" "}
                       </p>

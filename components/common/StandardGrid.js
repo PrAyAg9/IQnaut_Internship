@@ -178,7 +178,7 @@ const StandardGrid = ({
                                 height: "250px",
                               }}
                             >
-                              <Link href={`/${detailsRoute}/${_id}`} passHref>
+                              <Link href={`#`} passHref>
                                 <a>
                                   <Image
                                     src={img_bg}
@@ -191,7 +191,7 @@ const StandardGrid = ({
                             </div>
                             <div className="course__content p-relative">
                               <h3 className="course__title">
-                                <Link href={`/${detailsRoute}/${_id}`} passHref>
+                                <Link href={`#`} passHref>
                                   <a>{title.substring(0, 30)}...</a>
                                 </Link>
                               </h3>
@@ -199,7 +199,7 @@ const StandardGrid = ({
                               <hr />
                               <div className="d-flex align-items-center justify-content-between">
                                 <div className="course__tutor">
-                                  <Link href="#" passHref>
+                            
                                     <a className="d-flex align-items-center">
                                       <Image
                                         src={teacher_img}
@@ -211,7 +211,7 @@ const StandardGrid = ({
                                       />
                                       <span className="ms-2">{tutor_name}</span>
                                     </a>
-                                  </Link>
+                            
                                 </div>
                                 <div className="course__date d-flex align-items-center">
                                   <i className="fa-regular fa-calendar me-2"></i>
@@ -259,7 +259,7 @@ const StandardGrid = ({
                                     height: "250px",
                                   }}
                                 >
-                                  <Link href={`/${detailsRoute}/${_id}`} passHref>
+                                  <Link href={`#`} passHref>
                                     <a>
                                       <Image
                                         src={img_bg}
@@ -275,7 +275,7 @@ const StandardGrid = ({
                                 <div className="course__right p-relative">
                                   <div className="course__content p-relative">
                                     <h3 className="course__title">
-                                      <Link href={`/${detailsRoute}/${_id}`} passHref>
+                                      <Link href={`#`} passHref>
                                         <a>{title.substring(0, 30)}...</a>
                                       </Link>
                                     </h3>
@@ -283,7 +283,7 @@ const StandardGrid = ({
                                     <hr />
                                     <div className="d-flex align-items-center justify-content-between">
                                       <div className="course__tutor">
-                                        <Link href="#" passHref>
+                     
                                           <a className="d-flex align-items-center">
                                             <Image
                                               src={teacher_img}
@@ -295,7 +295,7 @@ const StandardGrid = ({
                                             />
                                             <span className="ms-2">{tutor_name}</span>
                                           </a>
-                                        </Link>
+                              
                                       </div>
                                       <div className="course__date d-flex align-items-center">
                                         <i className="fa-regular fa-calendar me-2"></i>
@@ -305,7 +305,7 @@ const StandardGrid = ({
                                   </div>
                                   <div className="course__content-bottom d-flex justify-content-between align-items-center">
                                     <div className="course__btn">
-                                      <Link href={`/${detailsRoute}/${_id}`} passHref>
+                                      <Link href={`#`} passHref>
                                         <a className="link-btn-2">
                                           <span>
                                             View Details

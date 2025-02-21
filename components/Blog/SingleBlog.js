@@ -1,18 +1,17 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Navigation, EffectFade } from "swiper";
+import { Navigation, EffectFade } from "swiper/modules"; // ✅ Correct Import
 import Link from "next/link";
 import { Modal } from "react-responsive-modal";
 import ReactPlayer from "react-player";
 import { useState } from "react";
 import Image from "next/image";
 
-SwiperCore.use([Navigation]);
-
 const SingleBlog = ({ blog }) => {
   // modal state
   const [open, setOpen] = useState(false);
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
+
   return (
     <>
       <Modal
@@ -40,7 +39,7 @@ const SingleBlog = ({ blog }) => {
         />
       </Modal>
 
-      <article className={`postbox__item format-image mb-50 transition-3`}>
+      <article className="postbox__item format-image mb-50 transition-3">
         {!blog?.slider && blog?.videoPopup ? (
           <div className="postbox__thumb postbox__video w-img p-relative">
             <Link href={`/blog-details/${blog?._id}`}>
@@ -50,7 +49,6 @@ const SingleBlog = ({ blog }) => {
             </Link>
             <button
               onClick={onOpenModal}
-              href="https://youtu.be/-WRZI63emjs"
               className="play-btn pulse-btn popup-video"
             >
               <i className="fas fa-play"></i>
@@ -76,32 +74,19 @@ const SingleBlog = ({ blog }) => {
               loop={true}
               autoplay={{ delay: 5000 }}
               effect={"fade"}
-              className="swiper-wrapper"
-              modules={[EffectFade]}
-              navigation={{
-                nextEl: ".postbox-slider-button-next",
-                prevEl: ".postbox-slider-button-prev",
-              }}
+              navigation={true} // ✅ Navigation enabled
+              modules={[Navigation, EffectFade]} // ✅ Correct module usage
             >
-              <SwiperSlide className="postbox__slider-item swiper-slide">
+              <SwiperSlide>
                 <img src="assets/img/blog/blog-big-4.jpg" alt="" />
               </SwiperSlide>
-              <SwiperSlide className="postbox__slider-item swiper-slide">
+              <SwiperSlide>
                 <img src="assets/img/blog/blog-big-5.jpg" alt="" />
               </SwiperSlide>
-              <SwiperSlide className="postbox__slider-item swiper-slide">
+              <SwiperSlide>
                 <img src="assets/img/blog/blog-big-6.jpg" alt="" />
               </SwiperSlide>
             </Swiper>
-
-            <div className="postbox-nav">
-              <button className="postbox-slider-button-next">
-                <i className="fal fa-arrow-right"></i>
-              </button>
-              <button className="postbox-slider-button-prev">
-                <i className="fal fa-arrow-left"></i>
-              </button>
-            </div>
           </div>
         )}
 
@@ -129,11 +114,7 @@ const SingleBlog = ({ blog }) => {
           <div className="postbox__text">
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat […]
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
           </div>
           <div className="postbox__read-more">

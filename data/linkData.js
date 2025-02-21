@@ -7,7 +7,7 @@ const links = [
 
     {
         id: 2,
-        url: '/about',
+        url: '#',
         name: 'About',
         submenu: [
             {
@@ -45,7 +45,7 @@ const links = [
 
     {
         id: 3,
-        url: '/staff-details',
+        url: '#',
         name: 'Administration',
         submenu: [
             {
@@ -83,7 +83,7 @@ const links = [
 
     {
         id: 4,
-        url: '/academics',
+        url: '#',
         name: 'Academics',
         submenu: [
             {
@@ -116,12 +116,12 @@ const links = [
 
     {
         id: 5,
-        url: '/#',
+        url: '#',
         name: 'More',
         submenu: [
             {
                 id: 1,
-                url: '/co-curricular-activities',
+                url: '/curricular-details',
                 name: 'CoCurricular Activities'
             },
             {
@@ -159,7 +159,7 @@ const links = [
 
     {
         id: 6,
-        url: '/gallery',
+        url: '#',
         name: 'Gallery',
         submenu: [
             {

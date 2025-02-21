@@ -110,7 +110,7 @@ const FeeStructureScholarship = () => {
             and benefits, please review our scholarship guidelines. If you meet
             the criteria, we encourage you to apply.
           </p>
-          <Link href="/apply-for-scholarship" passHref legacyBehavior>
+          <Link href="#" passHref legacyBehavior>
             <a className="scholarshipButton">Apply for Scholarship</a>
           </Link>
         </div>

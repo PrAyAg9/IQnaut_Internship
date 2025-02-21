@@ -6,7 +6,7 @@ import AboutRightSide from "./AboutRightSide";
 
 const AboutUsArea = () => {
   return (
-    <section className="blog__area pt-60 pb-60">
+    <section className="blog__area pt-20 pb-60">
       <div className="container">
         <div className="row">
           {/* Main Content */}

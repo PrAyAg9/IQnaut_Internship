@@ -47,7 +47,7 @@ const AboutRightSide = () => {
             Proudly achieving a 100% success rate for the past 12 years and still going strong!
           </p>
           <a 
-            href="/facilities" 
+            href="#" 
             className="btn btn-primary" 
             style={{
               padding: "10px 20px",
