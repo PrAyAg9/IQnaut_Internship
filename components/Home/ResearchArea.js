@@ -23,7 +23,7 @@ const ResearchArea = () => {
               >
                 <div
                   className="research__thumb mb-20"
-                  style={{ position: "relative", width: "100%", height: "180px" }}
+                  style={{ position: "relative", width: "100%", height: "260px" }}
                 >
                   <Image
                     src={item.img}

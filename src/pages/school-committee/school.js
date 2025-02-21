@@ -27,7 +27,7 @@ function SchoolComitte() {
               >
                 <div className="mentors__item w-100">
                   <div className="mentors__img">
-                    <Link href={`/school-comittee/${member.id}`} passHref>
+                    <Link href={`#`} passHref>
                       <a>
                         <Image
                           src={member.image}
@@ -43,7 +43,7 @@ function SchoolComitte() {
                   <div className="mentors__content">
                     <div className="mentors__content-top">
                       <h4 className="name">
-                        <Link href={`/school-comittee/${member.id}`} passHref>
+                        <Link href={`#`} passHref>
                           <a>{member.name}</a>
                         </Link>
                       </h4>

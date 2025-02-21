@@ -70,9 +70,9 @@ const HomeBlog = () => {
         <div className="row">
           <div className="col-xxl-12">
             <div className="section__title-wrapper mb-60 text-center">
-              <span className="section__title-pre">Our Latest Services</span>
+              <span className="section__title-pre">Top News of Our School</span>
               <h2 className="section__title section__title-44">
-                Advance Services we provide at ABC School
+                Trending News about ABC School
               </h2>
             </div>
           </div>

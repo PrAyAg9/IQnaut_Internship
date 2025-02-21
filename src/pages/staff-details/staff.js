@@ -46,10 +46,9 @@ function Staff() {
           <div className="section__title text-center mb-40">
             <h2 className="title">School Staff</h2>
             <p className="pb-10">
-              Our dedicated team of professionals crafting the student&apos;s
-              future.
+              Our dedicated team of professionals crafting the student&apos;s future.
             </p>
-            <div className=" pb-20 search-container">
+            <div className="pb-20 search-container">
               <input
                 type="text"
                 placeholder="Search teacher..."
@@ -61,7 +60,8 @@ function Staff() {
           <div className="row justify-content-center">
             {currentStaff.map((staff) => (
               <div key={staff.id} className="col-xl-3 col-lg-4 col-sm-6">
-                <StaffCard staff={staff} />
+                {/* Pass link="#" so StaffCard's link never navigates */}
+                <StaffCard staff={staff} link="#" />
               </div>
             ))}
           </div>
@@ -70,17 +70,15 @@ function Staff() {
               <button onClick={prevPage} disabled={currentPage === 1}>
                 Previous
               </button>
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                (page) => (
-                  <button
-                    key={page}
-                    onClick={() => goToPage(page)}
-                    className={page === currentPage ? "active" : ""}
-                  >
-                    {page}
-                  </button>
-                )
-              )}
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => goToPage(page)}
+                  className={page === currentPage ? "active" : ""}
+                >
+                  {page}
+                </button>
+              ))}
               <button onClick={nextPage} disabled={currentPage === totalPages}>
                 Next
               </button>

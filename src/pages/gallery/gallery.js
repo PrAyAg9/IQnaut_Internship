@@ -1,57 +1,39 @@
 /* eslint-disable react/no-unknown-property */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
+import 'react-image-lightbox/style.css';
+
+// Dynamically load react-image-lightbox to ensure Next.js compatibility (client-side only)
+const Lightbox = dynamic(() => import("react-image-lightbox"), { ssr: false });
 
 export default function Gallery() {
-  // Gallery album data (all images in one album)
-  const galleryImages = [
-    { id: 1, src: "/assets/img/gallery/gallery-img01.jpg", alt: "Gallery Image 1" },
-    { id: 2, src: "/assets/img/gallery/gallery-img02.jpg", alt: "Gallery Image 2" },
-    { id: 3, src: "/assets/img/gallery/gallery-img03.jpg", alt: "Gallery Image 3" },
-    { id: 4, src: "/assets/img/gallery/gallery-img04.jpg", alt: "Gallery Image 4" },
-    { id: 5, src: "/assets/img/gallery/gallery-img05.jpg", alt: "Gallery Image 5" },
-    { id: 6, src: "/assets/img/gallery/gallery-img06.jpg", alt: "Gallery Image 6" },
+  // Base images that will be repeated to form a 5x5 grid (25 images)
+  const baseImages = [
+    { src: "/assets/img/gallery/gallery-img01.jpg", alt: "Gallery Image 1" },
+    { src: "/assets/img/gallery/gallery-img02.jpg", alt: "Gallery Image 2" },
+    { src: "/assets/img/gallery/gallery-img03.jpg", alt: "Gallery Image 3" },
+    { src: "/assets/img/gallery/gallery-img04.jpg", alt: "Gallery Image 4" },
+    { src: "/assets/img/gallery/gallery-img05.jpg", alt: "Gallery Image 5" },
+    { src: "/assets/img/gallery/gallery-img06.jpg", alt: "Gallery Image 6" },
   ];
 
-  const [selectedImage, setSelectedImage] = useState(null);
+  // Create an array of 25 images using modulo repetition of the base images
+  const galleryImages = Array.from({ length: 25 }, (_, i) => ({
+    id: i + 1,
+    src: baseImages[i % baseImages.length].src,
+    alt: `Gallery Image ${i + 1}`,
+  }));
 
-  const handleImageClick = (image) => {
-    setSelectedImage(image);
+  // State to track the current photo index and lightbox open status
+  const [photoIndex, setPhotoIndex] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
+
+  // When an image is clicked, open the lightbox with the corresponding index
+  const handleImageClick = (index) => {
+    setPhotoIndex(index);
+    setIsOpen(true);
   };
-
-  const handleLightboxClose = () => {
-    setSelectedImage(null);
-  };
-
-  const handlePrevImage = () => {
-    if (!selectedImage) return;
-    const currentIndex = galleryImages.findIndex(
-      (img) => img.id === selectedImage.id
-    );
-    const prevIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-    setSelectedImage(galleryImages[prevIndex]);
-  };
-
-  const handleNextImage = () => {
-    if (!selectedImage) return;
-    const currentIndex = galleryImages.findIndex(
-      (img) => img.id === selectedImage.id
-    );
-    const nextIndex = (currentIndex + 1) % galleryImages.length;
-    setSelectedImage(galleryImages[nextIndex]);
-  };
-
-  // Keyboard navigation for lightbox
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (!selectedImage) return;
-      if (e.key === "Escape") handleLightboxClose();
-      if (e.key === "ArrowLeft") handlePrevImage();
-      if (e.key === "ArrowRight") handleNextImage();
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [selectedImage]);
 
   return (
     <div className="gallery-area">
@@ -66,8 +48,12 @@ export default function Gallery() {
 
         {/* Gallery Grid */}
         <div className="gallery-grid">
-          {galleryImages.map((image) => (
-            <div key={image.id} className="gallery-item" onClick={() => handleImageClick(image)}>
+          {galleryImages.map((image, index) => (
+            <div
+              key={image.id}
+              className="gallery-item"
+              onClick={() => handleImageClick(index)}
+            >
               <Image
                 src={image.src}
                 alt={image.alt}
@@ -79,58 +65,30 @@ export default function Gallery() {
             </div>
           ))}
         </div>
-
-        {/* Lightbox Modal */}
-        {selectedImage && (
-          <div className="lightbox-overlay" onClick={handleLightboxClose}>
-            <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-              {/* Close button */}
-              <button className="close-btn" onClick={handleLightboxClose} aria-label="Close">
-                &times;
-              </button>
-              {/* Navigation arrows */}
-              <div className="nav-arrow prev" onClick={handlePrevImage}>
-                ‹
-              </div>
-              <div className="nav-arrow next" onClick={handleNextImage}>
-                ›
-              </div>
-              {/* Main image */}
-              <div className="lightbox-main">
-                <Image
-                  src={selectedImage.src}
-                  alt={selectedImage.alt}
-                  layout="responsive"
-                  width={1200}
-                  height={800}
-                  objectFit="contain"
-                />
-              </div>
-              {/* Thumbnail strip */}
-              <div className="lightbox-thumbnails">
-                {galleryImages.map((img) => (
-                  <div
-                    key={img.id}
-                    className={`thumbnail ${selectedImage.id === img.id ? "active" : ""}`}
-                    onClick={() => setSelectedImage(img)}
-                  >
-                    <Image
-                      src={img.src}
-                      alt={img.alt}
-                      width={100}
-                      height={70}
-                      objectFit="cover"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
       </div>
 
+      {/* React Image Lightbox */}
+      {isOpen && (
+        <Lightbox
+          mainSrc={galleryImages[photoIndex].src}
+          nextSrc={galleryImages[(photoIndex + 1) % galleryImages.length].src}
+          prevSrc={
+            galleryImages[
+              (photoIndex + galleryImages.length - 1) % galleryImages.length
+            ].src
+          }
+          onCloseRequest={() => setIsOpen(false)}
+          onMovePrevRequest={() =>
+            setPhotoIndex((photoIndex + galleryImages.length - 1) % galleryImages.length)
+          }
+          onMoveNextRequest={() =>
+            setPhotoIndex((photoIndex + 1) % galleryImages.length)
+          }
+          imageCaption={galleryImages[photoIndex].alt}
+        />
+      )}
+
       <style jsx>{`
-        /* Container */
         .gallery-area {
           padding: 40px 0 90px;
         }
@@ -142,21 +100,16 @@ export default function Gallery() {
           text-align: center;
           margin-bottom: 60px;
         }
-
-        /* Gallery Grid */
+        /* Gallery Grid with 5 columns */
         .gallery-grid {
           display: flex;
           flex-wrap: wrap;
         }
         .gallery-item {
-          flex: 0 0 33.3333%;
-          max-width: 33.3333%;
+          flex: 0 0 20%;
+          max-width: 20%;
           cursor: pointer;
-        }
-        /* Remove any gap between images */
-        .gallery-item :global(.nextImage) {
-          margin: 0;
-          padding: 0;
+          padding: 5px;
         }
         /* Ensure images fill the container */
         .gallery-item :global(img) {
@@ -164,80 +117,23 @@ export default function Gallery() {
           width: 100%;
           height: auto;
         }
-
-        /* Lightbox Styles */
-        .lightbox-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(0, 0, 0, 0.9);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 1050;
-        }
-        .lightbox-content {
-          position: relative;
-          max-width: 90vw;
-          width: 100%;
-        }
-        .close-btn {
-          position: absolute;
-          top: 10px;
-          right: 10px;
-          font-size: 2rem;
-          background: none;
-          border: none;
-          color: white;
-          cursor: pointer;
-          z-index: 1060;
-        }
-        .nav-arrow {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          font-size: 3rem;
-          color: white;
-          cursor: pointer;
-          z-index: 1060;
-          user-select: none;
-        }
-        .nav-arrow.prev {
-          left: 10px;
-        }
-        .nav-arrow.next {
-          right: 10px;
-        }
-        .lightbox-main {
-          margin: 0 auto;
-        }
-        .lightbox-thumbnails {
-          display: flex;
-          justify-content: center;
-          margin-top: 20px;
-          gap: 10px;
-        }
-        .thumbnail {
-          cursor: pointer;
-          border: 2px solid transparent;
-        }
-        .thumbnail.active {
-          border-color: white;
-        }
-
         /* Responsive adjustments */
+        @media (max-width: 1024px) {
+          .gallery-item {
+            flex: 0 0 25%;
+            max-width: 25%;
+          }
+        }
         @media (max-width: 768px) {
           .gallery-item {
-            flex: 0 0 50%;
-            max-width: 50%;
+            flex: 0 0 33.33%;
+            max-width: 33.33%;
           }
         }
         @media (max-width: 480px) {
           .gallery-item {
-            flex: 0 0 100%;
-            max-width: 100%;
+            flex: 0 0 50%;
+            max-width: 50%;
           }
         }
       `}</style>

@@ -9,7 +9,7 @@ const CurricularActivitiesArea = ({ activitiesData = [] }) => {
   const defaultActivities = [
     {
       _id: "1",
-      img_bg: "assets/img/course/course-1.jpg",
+      img_bg: "assets/img/grid/9.png",
       category: "Sports",
       title: "Inter-School Cricket Tournament",
       teacher_img: "assets/img/course/course-2.jpg",
@@ -19,7 +19,7 @@ const CurricularActivitiesArea = ({ activitiesData = [] }) => {
     },
     {
       _id: "2",
-      img_bg: "assets/img/course/course-1.jpg",
+      img_bg: "assets/img/grid/18.png",
       category: "Arts",
       title: "Annual Art Exhibition 2024",
       teacher_img: "assets/img/course/course-2.jpg",
@@ -29,7 +29,7 @@ const CurricularActivitiesArea = ({ activitiesData = [] }) => {
     },
     {
       _id: "3",
-      img_bg: "assets/img/course/course-1.jpg",
+      img_bg: "assets/img/grid/25.png",
       category: "Music",
       title: "School Band Competition",
       teacher_img: "assets/img/course/course-2.jpg",
@@ -39,7 +39,7 @@ const CurricularActivitiesArea = ({ activitiesData = [] }) => {
     },
     {
       _id: "4",
-      img_bg: "assets/img/course/course-1.jpg",
+      img_bg: "assets/img/grid/20.png",
       category: "Dance",
       title: "Classical Dance Performance",
       teacher_img: "assets/img/course/course-2.jpg",
@@ -49,7 +49,7 @@ const CurricularActivitiesArea = ({ activitiesData = [] }) => {
     },
     {
       _id: "5",
-      img_bg: "assets/img/course/course-1.jpg",
+      img_bg: "assets/img/grid/21.png",
       category: "Culture",
       title: "Cultural Fest & Traditions",
       teacher_img: "assets/img/course/course-2.jpg",
@@ -59,7 +59,7 @@ const CurricularActivitiesArea = ({ activitiesData = [] }) => {
     },
     {
       _id: "6",
-      img_bg: "assets/img/course/course-1.jpg",
+      img_bg: "assets/img/grid/22.png",
       category: "Theatre",
       title: "School Drama and Theatre",
       teacher_img: "assets/img/course/course-2.jpg",
@@ -69,7 +69,7 @@ const CurricularActivitiesArea = ({ activitiesData = [] }) => {
     },
     {
       _id: "7",
-      img_bg: "assets/img/course/course-2.jpg",
+      img_bg: "assets/img/grid/23.png",
       category: "Technology",
       title: "Robotics and Coding Workshop",
       teacher_img: "teacher_tech.jpg",
@@ -251,7 +251,7 @@ const CurricularActivitiesArea = ({ activitiesData = [] }) => {
                           >
                             <div className="course__item white-bg transition-3 mb-30">
                               <div className="course__thumb w-img fix course_thumb_height">
-                                <Link href={`/curricular-details/${_id}`}>
+                                <Link href={`#`}>
                                   <a>
                                     <img src={img_bg} alt="" />
                                   </a>
@@ -260,7 +260,7 @@ const CurricularActivitiesArea = ({ activitiesData = [] }) => {
                               <div className="course__content p-relative">
                                 {/* Title */}
                                 <h3 className="course__title">
-                                  <Link href={`/curricular-details/${_id}`}>
+                                  <Link href={`#`}>
                                     <a>{title.substring(0, 30)}..</a>
                                   </Link>
                                 </h3>
@@ -319,7 +319,7 @@ const CurricularActivitiesArea = ({ activitiesData = [] }) => {
                                     className="course__thumb w-img p-relative fix"
                                     style={{ height: "100%" }}
                                   >
-                                    <Link href={`/curricular-details/${_id}`}>
+                                    <Link href={`#`}>
                                       <a>
                                         <img
                                           src={img_bg}
@@ -335,7 +335,7 @@ const CurricularActivitiesArea = ({ activitiesData = [] }) => {
                                     <div className="course__content p-relative">
                                       {/* Title */}
                                       <h3 className="course__title">
-                                        <Link href={`/curricular-details/${_id}`}>
+                                        <Link href={`#`}>
                                           <a>{title?.substring(0, 30)}..</a>
                                         </Link>
                                       </h3>
@@ -360,7 +360,7 @@ const CurricularActivitiesArea = ({ activitiesData = [] }) => {
                                     </div>
                                     <div className="course__content-bottom d-flex justify-content-between align-items-center">
                                       <div className="course__btn">
-                                        <Link href={`/curricular-details/${_id}`}>
+                                        <Link href={`#`}>
                                           <a className="link-btn-2">
                                             View Details
                                             <i className="far fa-arrow-right"></i>
